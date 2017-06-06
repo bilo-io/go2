@@ -1,0 +1,52 @@
+@import '../../../ws-core/sass/mixins.scss';
+
+$height: 2rem;
+$padding: 1rem;
+.navbar {
+    @include box-shadow(0, 1px, 2px, rgba(0, 0, 0, 0.2));
+    position: fixed;
+    width: calc(100% - 2 * #{$padding});
+    padding: $padding;
+    top: 0;
+    left: 0;
+    height: $height;
+    line-height: $height;
+    background: #232323;
+    color: white;
+    display: flex;
+    flex-direction: row;
+
+    label {
+        color: #00adee;
+        height: $height;
+    }
+    $link-padding: 6rem;
+    .links {
+        position: absolute;
+        // background: red;
+        width: calc(100% - 2 * #{$link-padding});
+        left: $link-padding;
+        text-align: center;
+        .link {
+            height: 1rem;
+            line-height: 1rem;
+            color: lightblue;
+            padding: 1rem;
+            padding-bottom: calc(1rem - 2px);
+            margin-left: 0.5rem;
+            margin-right: 0.5rem;
+            border-bottom: 0px solid transparent;
+            text-decoration: unset;
+
+             &:hover {
+                 color: #00adee;
+                 border-bottom: 2px solid #00adee;
+             }
+        }
+
+        .active {
+            color: #00adee;
+            border-bottom: 2px solid #00adee;
+        }
+    }
+}

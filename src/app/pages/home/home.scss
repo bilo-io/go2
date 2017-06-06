@@ -1,0 +1,15 @@
+
+div.container {
+    position: relative;
+    width: 100vw;
+    height: 100%;
+    // background: red;
+    img {
+        position: absolute;
+        width: 128px;
+        height: auto;
+        margin-left: auto;
+        margin-right: auto;
+        border-radius: 50%;
+    }
+}
