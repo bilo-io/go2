@@ -2,7 +2,7 @@
 
 A mobile-friendly journey planning tool, to help you get from A to B.
 
-### The project techstack
+## The project techstack
 
 |The thing|... and what it is for|
 |:--------|:-----------|
@@ -10,19 +10,10 @@ A mobile-friendly journey planning tool, to help you get from A to B.
 |[React](https://facebook.github.io/react/)|a view layer for dynamic web apps|
 |[Webpack](https://webpack.github.io)|a module bundler for javascript projects|
 |[Leaflet](http://leafletjs.com/)|open-source JavaScript library for mobile-friendly interactive maps|
-|[Karma](http://karma-runner.github.io/1.0/config/configuration-file.html)|a unit testing framework|
 
+## Usage
 
-# Usage
-
-## Install & Run
-
-### Continuous Development
-
-- `git clone https://whereismytransport.visualstudio.com/Product/_git/HydraUI`
-- `npm run setup`
-
-OR
+### Install & Run
 
 - `npm install`
 - `npm start`
