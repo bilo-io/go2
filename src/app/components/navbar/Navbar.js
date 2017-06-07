@@ -14,6 +14,7 @@ export default class Navbar extends React.Component {
     initState() {
         this.setState({
             title: 'Go2',
+            screen: 'journeys'
         });
     }
 

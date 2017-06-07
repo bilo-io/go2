@@ -5,4 +5,19 @@
     width: 100%;
     height: calc(100% - 4rem);
     background: #444444;
+
+    .map-wrapper {
+        // position: relative;
+        top: 0;
+        height: 20rem;
+    }
+
+    .journey-wrapper {
+        position: fixed;
+        height: 10rem;
+        width: 50%;
+        bottom: 0;
+        display: none;
+    }
 }
+

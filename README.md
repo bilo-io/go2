@@ -25,7 +25,7 @@ Locally, the webapp is served on [http://localhost:2001](http://localhost:2001)
 - Journey with ID:
     - [http://localhost:2001/journeys/3dhNOH97WUq_taeKAW2gqA](http://localhost:2001/journeys/3dhNOH97WUq_taeKAW2gqA)
 - Journey with `destination` (lat,lon):
-    - [http://localhost:2001/journeys?destination=-33.9253,18.4532&index=2](http://localhost:2001/journeys?destination=-33.9253,18.4532&index=2)
+    - [http://localhost:2001/journeys?destination=-33.960709,18.376146&index=2](http://localhost:2001/journeys?destination=-33.960709,18.376146&index=2)
 
 >NOTE: adding the `index={integer}` parameter automatically opens itineraries, ranging from 0 - 4;
 

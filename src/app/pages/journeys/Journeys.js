@@ -1,6 +1,8 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 import Map from '../../components/map/Map.js';
+import Journey from './journey/Journey';
+import tapi from '../../tapi.utils';
 require('./journeys.scss');
 var qs = require('query-string');
 var axios = require('axios');
@@ -16,10 +18,12 @@ export default class Journeys extends React.Component {
         this.initState();
         let journeyId = this.props.match.params.journeyId;
         let params = qs.parse(this.props.location.search);
-        console.log('journeyID:',qs.parse(this.props.location));
+
         if (journeyId) {
             console.log('Get Journey with ID:', journeyId);
-            setTimeout(() => { this.getJourney(journeyId); }, 10000);
+            setTimeout(() => {
+                this.getJourney(journeyId);
+            }, 10000);
         } else if (params.destination) {
             this.itineraryIndex = params.index;
             let destination = params
@@ -58,7 +62,13 @@ export default class Journeys extends React.Component {
     render() {
         return (
             <div className='journeys'>
-                <Map geojson={this.state && this.state.geometry}/>
+                <Journey
+                    className='journey-wrapper'
+                    journey={this.state && this.state.journey}
+                    setActiveItinerary={this
+                    .setActiveItinerary
+                    .bind(this)}/>
+                <Map className='map-wrapper' geojson={this.state && this.state.geometry}/>
             </div>
         )
     }
@@ -69,8 +79,11 @@ export default class Journeys extends React.Component {
             'Authorization': localStorage.getItem('wimt_token')
         };
         axios({method: 'get', url: `${this.platformUrl}/journeys/${id}`, headers: headers}).then((response) => {
+            this.setState(Object.assign({}, this.state, {journey: response.data}));
             this.checkForGeometry(response.data);
-            this.selectItinerary(this.itineraryIndex ? this.itineraryIndex : 0);
+            this.selectItinerary(this.itineraryIndex
+                ? this.itineraryIndex
+                : 0);
         }).catch((error) => {
             console.log({error});
         });
@@ -82,8 +95,11 @@ export default class Journeys extends React.Component {
             'Authorization': localStorage.getItem('wimt_token')
         };
         axios({method: 'post', url: `${this.platformUrl}/journeys`, data: body, headers: headers}).then((response) => {
+            this.setState(Object.assign({}, this.state, {journey: response.data}));
             this.checkForGeometry(response.data);
-            this.selectItinerary(this.itineraryIndex ? this.itineraryIndex : 0);
+            this.selectItinerary(this.itineraryIndex
+                ? this.itineraryIndex
+                : 0);
         }).catch((error) => {
             console.log({error});
         });
@@ -176,31 +192,44 @@ export default class Journeys extends React.Component {
                 .push(mapItinerary);
         });
         this.setState(Object.assign({}, this.state, {geometry: this.geometry}));
-        console.log('Assigning Geometry:', this.state);
     }
     selectItinerary(index) {
-        if(index >= this.geometry.itineraries.length) {
+        if (index >= this.geometry.itineraries.length) {
             return;
         }
         let geometry = {};
         geometry.points = [];
         geometry.lines = [];
-        geometry.itineraries = ((this.state && this.state.geometry && this.state.geometry.itineraries || []).map(itinerary => { return itinerary }) || []);
+        geometry.itineraries = ((this.state && this.state.geometry && this.state.geometry.itineraries || []).map(itinerary => {
+            return itinerary
+        }) || []);
 
         if (this.geometry.itineraries[index]) {
             (this.geometry.itineraries[index].points || []).forEach((point) => {
-                geometry.points.push(point);
+                geometry
+                    .points
+                    .push(point);
             });
             (this.geometry.itineraries[index].lines || []).forEach((line) => {
-                geometry.lines.push(line);
+                geometry
+                    .lines
+                    .push(line);
             });
         }
-        this.geometry.points && this.geometry.points.forEach((point) => {
-            geometry.points.push(point);
-        })
+        this.geometry.points && this
+            .geometry
+            .points
+            .forEach((point) => {
+                geometry
+                    .points
+                    .push(point);
+            })
         this.setState(Object.assign(this.state, {
             geometry: geometry,
             activeItinerary: index
-        }), () => { console.log(this.state, { geometry }) });
+        }));
+    }
+    setActiveItinerary(id) {
+        console.log('Parent selecting Itinerary:', id, this.props);
     }
 }

@@ -5,7 +5,8 @@ import Navbar from './components/navbar/Navbar.js';
 // Pages
 import Home from './pages/home/Home.js';
 import Journeys from './pages/journeys/Journeys.js';
-import tapi from './tapi.config.js';
+import tapi from './tapi.utils.js';
+import tapiConfig from './tapi.config.js';
 import axios from 'axios';
 import qs from 'query-string';
 require('./app.scss');
@@ -25,7 +26,7 @@ export default class App extends React.Component {
                 <div className='app-content'>
                     <Switch>
                         <Route exact path="/" component={Journeys}/>
-                        <Route exact path="/home" component={Home} />
+                        <Route exact path="/home" component={Home}/>
                         <Route exact path="/journeys" component={Journeys}/>
                         <Route path="/journeys/:journeyId" component={Journeys}/>
                     </Switch>
@@ -35,8 +36,8 @@ export default class App extends React.Component {
     }
     requestToken() {
         let payload = {
-            client_id: tapi.clientId,
-            client_secret: tapi.clientSecret,
+            client_id: tapiConfig.clientId,
+            client_secret: tapiConfig.clientSecret,
             scope: 'transportapi:all',
             grant_type: 'client_credentials'
         }
@@ -44,7 +45,7 @@ export default class App extends React.Component {
             'Accept': 'application/json',
             'Content-Type': 'application/x-www-form-urlencoded'
         };
-        axios.post(tapi.identityUrl, qs.stringify(payload), {headers}).then((response) => {
+        axios.post(tapiConfig.identityUrl, qs.stringify(payload), {headers}).then((response) => {
             let token = response.data.access_token;
             localStorage.setItem('wimt_token', `Bearer ${token}`);
         }).catch((error) => {

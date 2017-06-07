@@ -1,0 +1,23 @@
+@import '../../../../ws-core/sass/index.scss';
+$color: white;
+$background: #444;
+
+.journey {
+    position: relative;
+    height: 100%;
+    padding: 1rem;
+    overflow-y: auto;
+    color: $color;
+    background: rgba($col-background, 0.5);
+}
+
+.itinerary {
+    @extend .ws-card;
+    color: $background;
+    background: $color;
+}
+
+.leg {
+    color: darkgray;
+    background: lightgray;
+}
