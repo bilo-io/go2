@@ -5,10 +5,12 @@
   "main": "index.js",
   "scripts": {
     "start": "webpack-dev-server --inline --progress --port 2001",
-    "build": "webpack -p",
-    "serve": "node server.js",
+    "setup": "npm install && npm start",
+    "build": "npm run clean & webpack -p",
+    "serve": "node --inspect server.js",
     "test": "test",
-    "clean": "rm -rf ./dist"
+    "clean": "rimraf ./dist",
+    "clean-all": "rimraf ./dist & rimraf ./node_modules"
   },
   "author": "Bilo Lwabona",
   "license": "ISC",
@@ -32,5 +34,9 @@
     "style-loader": "^0.18.1",
     "webpack": "^2.6.1",
     "webpack-dev-server": "^2.4.5"
+  },
+  "dependencies": {
+    "express": "^4.15.3",
+    "express-history-api-fallback": "^2.2.1"
   }
 }
