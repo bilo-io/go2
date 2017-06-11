@@ -39,7 +39,7 @@ create_dist:
       - npm run build
 
 build_artifact:
-  stage: build_artifact
+  stage: artifact
   script:
       - mkdir artifact
       - mv dist/ ./artifact
