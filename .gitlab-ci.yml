@@ -25,7 +25,8 @@ clean_node_modules:
 clean_build_directories:
   stage: clean
   script:
-    - rm -rf dist artifact
+    - rm -rf dist
+    - rm -rf artifact
 
 install_global_dependencies:
   stage: setup
