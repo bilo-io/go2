@@ -1,5 +1,4 @@
 image: node:6
-
 stages:
  - setup_webpack
  - build_dist
@@ -26,5 +25,3 @@ build_artifact:
       - cd ./artifact
       - npm install --production
       - cd ../
-    only:
-    - master
