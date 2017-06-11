@@ -4,7 +4,6 @@ cache:
   paths: 
     - node_modules/
     - dist/
-    - artifact/
     
 stages:
   - status
@@ -17,6 +16,8 @@ stages:
 build_server_status:
   stage: status
   script:
+    - ls
+    - cd ./dist
     - ls
     - node -v
     - npm -v
@@ -62,3 +63,6 @@ build_artifact:
       - cd ./artifact
       - npm install --production
       - cd ../
+  cache:
+    paths: 
+      - artifact/
