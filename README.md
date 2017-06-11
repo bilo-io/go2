@@ -15,6 +15,8 @@ A mobile-friendly journey planning tool, to help you get from A to B.
 
 ### Install & Run
 
+
+- `https://github.com/bilo-io/go2`
 - `npm install`
 - `npm start`
 

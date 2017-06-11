@@ -62,12 +62,12 @@ export default class Journeys extends React.Component {
     render() {
         return (
             <div className='journeys'>
-                <Journey
+                {/*<Journey
                     className='journey-wrapper'
                     journey={this.state && this.state.journey}
                     setActiveItinerary={this
                     .setActiveItinerary
-                    .bind(this)}/>
+                    .bind(this)}/>*/}
                 <Map className='map-wrapper' geojson={this.state && this.state.geometry}/>
             </div>
         )

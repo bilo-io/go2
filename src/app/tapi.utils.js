@@ -1,5 +1,5 @@
 export class Journey {
-    constructor() {}
+    constructor() { }
     log() {
         console.log(`I'm a UTIL for Journey`)
     }
@@ -14,7 +14,7 @@ export class Journey {
 }
 
 export class Itinerary {
-    constructor() {}
+    constructor() { }
     log() {
         console.log(`I'm a UTIL for Itineraries`)
     }
@@ -38,43 +38,22 @@ export class Itinerary {
     }
 
     getModeIcon(mode) {
-        switch (mode) {
-            case 'LightRail':
-                return 'tram';
-            case 'Subway':
-                return 'directions_subway';
-            case 'Rail':
-                return 'directions_railway';
-            case 'Bus':
-                return 'directions_bus';
-            case 'Ferry':
-                return 'directions_boat';
-            case 'GroundCableCar':
-                return 'tram';
-            case 'Gondola':
-                return 'tram';
-            case 'Funicular':
-                return 'tram';
-            case 'Coach':
-                return 'directions_bus';
-            case 'Air':
-                return 'local_airport';
-            case 'Walk':
-            case 'Walking':
-            case 'Pedestrian':
-                return 'directions_walk';
-            case 'Bike':
-            case 'Bicycle':
-                return 'directions_bike';
-            case 'ShareTaxi':
-                return 'airport_shuttle';
-            default:
-                return 'error_outline';
+        let modes = {
+            LightRail: 'tram',
+            Subway: 'directions_subway',
+            Rail: 'directions_railway',
+            Bus: 'directions_bus',
+            Ferry: 'directions_boat',
+            Coach: 'directions_bus',
+            Walking: 'directions_walk',
+            ShareTaxi: 'airport_shuttle',
+            default: 'error_outline'
         }
+        return modes[mode];
     }
 }
 export class Leg {
-    constructor() {}
+    constructor() { }
     log() {
         console.log(`I'm a UTIL for Leg`)
     }

@@ -2,10 +2,16 @@ image: node:6
 
 pages:
   script:
+    - npm install -g webpack
     - npm install
     - npm run build
     - mkdir artifact
-    - ./node_modules/.bin/copyfiles -u 1 "dist/**/*" public
+    - mv dist ./artifact
+    - cp server.js ./artifact
+    - cp package.json ./artifact
+    - cd ./artifact
+    - npm install --production
+    - cd ../
   artifacts:
     paths:
       - artifact

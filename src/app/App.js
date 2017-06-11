@@ -4,6 +4,7 @@ import {Route, Switch} from 'react-router-dom';
 import Navbar from './components/navbar/Navbar.js';
 // Pages
 import Home from './pages/home/Home.js';
+import NotFound from './pages/not-found/NotFound.js';
 import Journeys from './pages/journeys/Journeys.js';
 import tapi from './tapi.utils.js';
 import tapiConfig from './tapi.config.js';
@@ -26,9 +27,10 @@ export default class App extends React.Component {
                 <div className='app-content'>
                     <Switch>
                         <Route exact path="/" component={Journeys}/>
-                        <Route exact path="/home" component={Home}/>
+                        {/*<Route exact path="/home" component={Home}/>*/}
                         <Route exact path="/journeys" component={Journeys}/>
                         <Route path="/journeys/:journeyId" component={Journeys}/>
+                        <Route path="*" component={NotFound}/>
                     </Switch>
                 </div>
             </div>

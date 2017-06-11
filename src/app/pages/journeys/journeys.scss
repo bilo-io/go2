@@ -1,13 +1,14 @@
+@import '../../app.scss';
+
 .journeys {
     position: fixed;
-    top: 4rem;
+    top: 3rem;
     left: 0;
     width: 100%;
-    height: calc(100% - 4rem);
+    height: calc(100% - #{$dim-navbar-height});
     background: #444444;
 
     .map-wrapper {
-        // position: relative;
         top: 0;
         height: 20rem;
     }
