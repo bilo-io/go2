@@ -1,19 +1,37 @@
 image: node:6
 
-pages:
+stages:
+ - webpack
+ - build
+ - artifact
+
+install_webpack:
+  stage: webpack
   script:
     - npm install -g webpack
+  only:
+    - master
+
+build:
+  stage: build
+  script:
     - npm install
     - npm run build
-    - mkdir artifact
-    - mv dist ./artifact
-    - cp server.js ./artifact
-    - cp package.json ./artifact
-    - cd ./artifact
-    - npm install --production
-    - cd ../
+  only:
+    - master
+
+artifact:
+  stage: artifact
+  script:
+      - mkdir artifact
+      - mv dist ./artifact
+      - cp server.js ./artifact
+      - cp package.json ./artifact
+      - cd ./artifact
+      - npm install --production
+      - cd ../
   artifacts:
     paths:
       - artifact
-  only:
+    only:
     - master
