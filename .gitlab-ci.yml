@@ -5,20 +5,16 @@ stages:
  - build
  - artifact
 
-install_webpack:
+webpack:
   stage: webpack
   script:
     - npm install -g webpack
-  only:
-    - master
 
 build:
   stage: build
   script:
     - npm install
     - npm run build
-  only:
-    - master
 
 artifact:
   stage: artifact
@@ -30,8 +26,5 @@ artifact:
       - cd ./artifact
       - npm install --production
       - cd ../
-  artifacts:
-    paths:
-      - artifact
     only:
     - master
