@@ -1,13 +1,16 @@
 image: node:6
+
 stages:
   - install_dependencies
   - build_artifact
+
 cache:
   script: echo "caching -> ./node_modules/"
   paths: 
     - node_modules/
     - dist/
     - artifact/
+    
  before_script:
   - node -v
   - npm -v
