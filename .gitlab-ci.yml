@@ -1,9 +1,5 @@
 image: node:6
 
-before_script:
-  - node -v
-  - npm -v
-
 cache:
   paths: 
     - node_modules/
@@ -11,11 +7,19 @@ cache:
     - artifact/
     
 stages:
+  - status
   - clean
   - setup
   - test
   - build
   - artifact
+
+build_server_status:
+  stage: status
+  script:
+    - ls
+    - node -v
+    - npm -v
 
 clean_node_modules:
   stage: clean
