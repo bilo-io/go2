@@ -1,8 +1,8 @@
 image: node:6
 
-stages:
-  - install_dependencies
-  - build_artifact
+before_script:
+  - node -v
+  - npm -v
 
 cache:
   script: echo "caching -> ./node_modules/"
@@ -11,12 +11,9 @@ cache:
     - dist/
     - artifact/
     
- before_script:
-  - node -v
-  - npm -v
-
-after_script:
-  - echo "Go2 YAML => after_script executed"
+stages:
+  - install_dependencies
+  - build_artifact
 
 install_dependencies:
   stage: install_dependencies
