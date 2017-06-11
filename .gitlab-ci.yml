@@ -1,25 +1,20 @@
 image: node:6
 stages:
- - setup_webpack
- - build_dist
+ - install_dependencies
  - build_artifact
 
-setup_webpack:
-  stage: setup_webpack
+install_dependencies:
+  stage: install_dependencies
   script:
     - npm install -g webpack
-
-build_dist:
-  stage: build_dist
-  script:
     - npm install
-    - npm run build
 
 build_artifact:
   stage: build_artifact
   script:
+      - npm run build
       - mkdir artifact
-      - mv dist ./artifact
+      - mv dist/ ./artifact
       - cp server.js ./artifact
       - cp package.json ./artifact
       - cd ./artifact
