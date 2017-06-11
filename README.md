@@ -2,7 +2,7 @@
 
 A mobile-friendly journey planning tool, to help you get from A to B.
 
-## The project techstack
+## Project Techstack
 
 |The thing|... and what it is for|
 |:--------|:-----------|
@@ -11,12 +11,20 @@ A mobile-friendly journey planning tool, to help you get from A to B.
 |[Webpack](https://webpack.github.io)|a module bundler for javascript projects|
 |[Leaflet](http://leafletjs.com/)|open-source JavaScript library for mobile-friendly interactive maps|
 
+## Production Service Stack
+
+|Service|Purpose|URL|
+|:--|:--|:---|
+|[GitHub]()|Source Control|https://github.com/bilo-io/go2.git
+|[GitLab]()|CI|https://bilo.lwabona@gitlab.com/bilo.lwabona/go2.git|
+
+
 ## Usage
 
 ### Install & Run
 
-
-- `https://github.com/bilo-io/go2`
+- `git clone https://github.com/bilo-io/go2.git`
+- `cd ./go2`
 - `npm install`
 - `npm start`
 
