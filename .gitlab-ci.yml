@@ -12,8 +12,10 @@ cache:
     
 stages:
   - clean
-  - install_dependencies
-  - build_artifact
+  - setup
+  - test
+  - build
+  - artifact
 
 clean_build_directories:
   stage: clean
@@ -21,15 +23,24 @@ clean_build_directories:
     - rm -rf artifact
 
 install_dependencies:
-  stage: install_dependencies
+  stage: setup
   script:
     - npm install -g webpack
     - npm install
 
+test_webapp:
+  stage: test
+  script: 
+    - echo "TODO unit & integration testing"
+
+create_dist:
+  stage: build
+  script:
+      - npm run build
+
 build_artifact:
   stage: build_artifact
   script:
-      - npm run build
       - mkdir artifact
       - mv dist/ ./artifact
       - cp server.js ./artifact
