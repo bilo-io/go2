@@ -1,27 +1,27 @@
 image: node:6
 
 stages:
- - webpack
- - build
- - artifact
+ - setup_webpack
+ - build_dist
+ - build_artifact
 
-install_webpack:
-  stage: webpack
+setup_webpack:
+  stage: setup_webpack
   script:
     - npm install -g webpack
   only:
     - master
 
-build:
-  stage: build
+build_dist:
+  stage: build_dist
   script:
     - npm install
     - npm run build
   only:
     - master
 
-artifact:
-  stage: artifact
+build_artifact:
+  stage: build_artifact
   script:
       - mkdir artifact
       - mv dist ./artifact
