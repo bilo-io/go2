@@ -11,8 +11,14 @@ cache:
     - artifact/
     
 stages:
+  - clean
   - install_dependencies
   - build_artifact
+
+clean_build_directories:
+  stage: clean
+  script:
+    - rm -rf artifact
 
 install_dependencies:
   stage: install_dependencies
