@@ -15,9 +15,8 @@ A mobile-friendly journey planning tool, to help you get from A to B.
 
 |Service|Purpose|URL|
 |:--|:--|:---|
-|[GitHub]()|Source Control|https://github.com/bilo-io/go2.git
+|[GitHub]()|Source Control|https://github.com/bilo-io/go2.git|
 |[GitLab]()|CI|https://bilo.lwabona@gitlab.com/bilo.lwabona/go2.git|
-
 
 ## Usage
 
