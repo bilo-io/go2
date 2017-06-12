@@ -17,8 +17,6 @@ build_server_status:
   stage: status
   script:
     - ls
-    - cd ./dist
-    - ls
     - node -v
     - npm -v
 
