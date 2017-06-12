@@ -13,4 +13,4 @@ server.use(fallback('index.html', {root:__dirname + '/dist/'}));
 server.use(express.static(__dirname + '/dist/'));
 server.listen(port, '0.0.0.0');
 
-console.log(`go2:server.js listening on port:${port}`);
+console.log(`go-2:server.js listening on port:${port}`);
