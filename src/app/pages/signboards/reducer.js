@@ -11,7 +11,7 @@ const initialState = {
     lineTimetable: undefined
 }
 
-function signboardsReducer(state = initialState, action) {
+const signboardsReducer = (state = initialState, action) => {
     switch (action.type) {
         case FETCH_STOP_TIMETABLE:
             return {

@@ -1,8 +1,10 @@
 import { combineReducers } from 'redux';
-import journeysReducer from './journeys/index.js';
-import signboardsReducer from './signboards/';
+import journeysReducer from './pages/journeys/reducer';
+import signboardsReducer from './pages/signboards/reducer';
 
 const rootReducer = combineReducers({
     journeysReducer,
     signboardsReducer
 });
+
+export default rootReducer;

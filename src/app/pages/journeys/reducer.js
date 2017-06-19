@@ -14,7 +14,7 @@ const initialState = {
     }
 }
 
-function journeysReducer(state = initialState, action) {
+const journeysReducer = (state = initialState, action) => {
     switch (action.type) {
         case CREATE_JOURNEY:
             let hasJourney = action.journey && action.journey.itineraries && action.journey.itineraries.length > 0;
