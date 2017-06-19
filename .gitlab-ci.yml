@@ -17,8 +17,6 @@ build_server_status:
   stage: status
   script:
     - ls
-    - cd ./dist
-    - ls
     - node -v
     - npm -v
 
@@ -26,6 +24,8 @@ clean_node_modules:
   stage: clean
   script:
     - rm -rf node_modules
+  only: 
+    - dev
 
 clean_build_directories:
   stage: clean
@@ -37,6 +37,8 @@ install_global_dependencies:
   stage: setup
   script:
     - npm install -g webpack
+  only: 
+    - dev
     
 install_dependencies:
   stage: setup

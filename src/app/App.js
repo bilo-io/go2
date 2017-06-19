@@ -1,11 +1,13 @@
 import React from 'react';
-import {Route, Switch} from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
+import { BrowserRouter as Router } from 'react-router-dom';
 // Components
 import Navbar from './components/navbar/Navbar.js';
 // Pages
-import Home from './pages/home/Home.js';
 import NotFound from './pages/not-found/NotFound.js';
-import Journeys from './pages/journeys/Journeys.js';
+import Journeys from './pages/journeys/';
+import Signboards from './pages/signboards/';
+// Utils
 import tapi from './tapi.utils.js';
 import tapiConfig from './tapi.config.js';
 import axios from 'axios';
@@ -23,19 +25,20 @@ export default class App extends React.Component {
     render() {
         return (
             <div>
-                <Navbar/>
-                <div className='app-content'>
-                    <Switch>
-                        <Route exact path="/" component={Journeys}/>
-                        {/*<Route exact path="/home" component={Home}/>*/}
-                        <Route exact path="/journeys" component={Journeys}/>
-                        <Route path="/journeys/:journeyId" component={Journeys}/>
-                        <Route path="*" component={NotFound}/>
+                <Router>
+                    <Switch className='app-content'>
+                        <Route exact path="/" component={Journeys} />
+                        <Route exact path="/journeys" component={Journeys} />
+                        <Route path="/journeys/:journeyId" component={Journeys} />
+                        <Route path="/signboards" component={Signboards} />
+                        <Route path="*" component={NotFound} />
                     </Switch>
-                </div>
+                </Router>
+                <Navbar />
             </div>
         )
     }
+
     requestToken() {
         let payload = {
             client_id: tapiConfig.clientId,
@@ -47,7 +50,7 @@ export default class App extends React.Component {
             'Accept': 'application/json',
             'Content-Type': 'application/x-www-form-urlencoded'
         };
-        axios.post(tapiConfig.identityUrl, qs.stringify(payload), {headers}).then((response) => {
+        axios.post(tapiConfig.identityUrl, qs.stringify(payload), { headers }).then((response) => {
             let token = response.data.access_token;
             localStorage.setItem('wimt_token', `Bearer ${token}`);
         }).catch((error) => {

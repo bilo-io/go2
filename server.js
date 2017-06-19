@@ -2,9 +2,8 @@ var express = require('express');
 var path = require('path');
 var fallback = require('express-history-api-fallback');
 var server = express();
-var port = process.env.port || 2010;
+var port = process.env.port || 2001;
 
-// https://stackoverflow.com/questions/28553904/client-routing-using-react-router-and-server-side-routing
 server.get('*', (req, res) => {
     res.sendFile(path.resolve(__dirname + '/dist/'));
 });
