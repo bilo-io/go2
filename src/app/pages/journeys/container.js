@@ -16,9 +16,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
     }
 }
 
-const VisibleMessage = connect(
+export default connect(
     mapStateToProps,
     mapDispatchToProps
 )(Journeys)
-
-export default Journeys;

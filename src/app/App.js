@@ -4,10 +4,10 @@ import { BrowserRouter as Router } from 'react-router-dom';
 // Components
 import Navbar from './components/navbar/Navbar.js';
 // Pages
-import Home from './pages/home/Home.js';
 import NotFound from './pages/not-found/NotFound.js';
-import Journeys from './pages/journeys/container.js';
+import Journeys from './pages/journeys/';
 import Signboards from './pages/signboards/';
+// Utils
 import tapi from './tapi.utils.js';
 import tapiConfig from './tapi.config.js';
 import axios from 'axios';

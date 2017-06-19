@@ -3,6 +3,9 @@ import { Link } from 'react-router-dom';
 require('./style.scss');
 
 export default class Signboards extends React.Component {
+    constructor(props) {
+        super(props);
+    }
     render() {
         return (
             <div className='signboards'>
