@@ -5,10 +5,16 @@ import {
 
 
 export function fetchStopTimetable(id) {
-    return { type: FETCH_STOP_TIMETABLE, id }
+    return {
+        type: FETCH_STOP_TIMETABLE,
+        payload: id
+    }
 }
 
 export function fetchLineTimetable(id) {
-    return { type: FETCH_LINE_TIMETABLE, id }
+    return {
+        type: FETCH_LINE_TIMETABLE,
+        payload: id
+    }
 }
 

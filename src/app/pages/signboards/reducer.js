@@ -12,6 +12,9 @@ const initialState = {
 }
 
 const signboardsReducer = (state = initialState, action) => {
+    console.log(action.type);
+    console.log({state});
+    
     switch (action.type) {
         case FETCH_STOP_TIMETABLE:
             return {

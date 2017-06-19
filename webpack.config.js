@@ -7,10 +7,10 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 var config = {
     devtool: 'source-map',
-    entry: SRC + '/index.jsx',
+    entry: SRC + '/index.js',
     output: {
         path: DIST,
-        publicPath: 'http://localhost:2001/',
+        publicPath: '/',
         filename: 'app.js'
 
     },
@@ -44,7 +44,11 @@ var config = {
         ]
     },
     plugins: [
-        new HtmlWebpackPlugin({ template: './src/index.html', filename: 'index.html', inject: 'body' })
+        new HtmlWebpackPlugin({
+            template: './src/index.html', 
+            filename: 'index.html', 
+            inject: 'body'
+        })
     ],
     devServer: {
         historyApiFallback: true,
