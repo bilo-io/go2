@@ -44,7 +44,6 @@ var config = {
         ]
     },
     plugins: [
-        'transform-object-rest-spread',
         new HtmlWebpackPlugin({ template: './src/index.html', filename: 'index.html', inject: 'body' })
     ],
     devServer: {

@@ -1,0 +1,10 @@
+$padding: 1em;
+.signboards {
+    background-color: white;
+    color: #333;
+    position: fixed;
+    top: 3em;
+    width: calc(100% - #{$padding});
+    padding: 1em;
+    height: calc(100% - 3em);
+}

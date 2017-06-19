@@ -1,15 +1,24 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './app/App.js';
-import {BrowserRouter as Router} from 'react-router-dom';
+import { Provider } from 'react-redux';
+import { BrowserRouter as Router } from 'react-router-dom';
 
-// import { createStore } from 'redux';
-// import reducer from './app/pages/journeys/reducer';
-// let store = createStore(reducer);
+import { createJourneyFromId, createJourneyFromBody, selectItinerary, setSomeMessage } from './app/pages/journeys/actions';
+import store from './app/store';
 
+/// This is just a test
+// console.log(store.getState());
+// store.dispatch(setSomeMessage('SomeJourneyId'));
+// store.dispatch(setSomeMessage('Another'));
+// let unsubscribe = store.subscribe(() => {
+//     console.log(store.getState())
+// });
+// unsubscribe();
+///
 
 ReactDOM.render(
-    <Router>
+    <Provider store={store}>
         <App></App>
-    </Router>
-, document.getElementById('app'));
+    </Provider>,
+document.getElementById('app'));
