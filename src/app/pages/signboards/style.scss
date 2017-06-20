@@ -8,6 +8,10 @@ $padding: 1em;
     padding: 1em;
     height: calc(100% - 3em);
 
+    p {
+        display: flex;
+    }
+    
     label {
         height: 3em;
         line-height: 3em;

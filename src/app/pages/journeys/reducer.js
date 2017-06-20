@@ -6,12 +6,10 @@ import {
 
 const initialState = {
     loading: false,
-    journeys: {
-        journey: undefined,
-        journeyId: undefined,
-        itinerary: undefined,
-        itineraryIndex: undefined,
-    }
+    journey: undefined,
+    journeyId: undefined,
+    itinerary: undefined,
+    itineraryIndex: undefined,
 }
 
 const journeysReducer = (state = initialState, action) => {

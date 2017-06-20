@@ -1,2 +1,4 @@
+export const SET_STOP_ID = 'SET_STOP_ID';
+export const SET_LINE_ID = 'SET_LINE_ID';
 export const FETCH_STOP_TIMETABLE = 'FETCH_STOP_TIMETABLE';
 export const FETCH_LINE_TIMETABLE = 'FETCH_LINE_TIMETABLE';

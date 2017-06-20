@@ -1,4 +1,4 @@
 import { createStore } from 'redux';
-import rootReducer from './root-reducer';
-let store = createStore(rootReducer);
+import { makeRootReducer } from './root-reducer';
+let store = createStore(makeRootReducer(), window.STATE_FROM_SERVER);
 export default store;

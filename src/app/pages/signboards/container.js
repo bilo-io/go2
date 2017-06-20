@@ -1,6 +1,8 @@
 import { connect } from 'react-redux';
-import Signboards from './component';
+import component from './component';
 import {
+    setStopId,
+    setLineId,
     fetchStopTimetable,
     fetchLineTimetable
 } from './actions';
@@ -14,12 +16,21 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = (dispatch, ownProps) => {
     return {
+        setStopId: (val) => dispatch(setStopId(val)),
+        setLineId: (val) => dispatch(setLineId(val)),
         fetchStopTimetable: (stopId) =>  dispatch(fetchStopTimetable(stopId)),
         fetchLineTimetable: (lineId) =>  dispatch(fetchLineTimetable(lineId))
     }
 }
 
-export default connect(
+const Signboards = connect(
     mapStateToProps,
     mapDispatchToProps
-)(Signboards);
+)(component);
+
+export default Signboards;
+
+// export default connect(
+//     mapStateToProps,
+//     mapDispatchToProps
+// )(Signboards);

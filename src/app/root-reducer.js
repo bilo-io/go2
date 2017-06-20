@@ -3,8 +3,15 @@ import journeysReducer from './pages/journeys/reducer';
 import signboardsReducer from './pages/signboards/reducer';
 
 const rootReducer = combineReducers({
-    journeysReducer,
-    signboardsReducer
+    journeys: journeysReducer,
+    signboards: signboardsReducer
 });
+
+export const makeRootReducer = () => {
+    return combineReducers({
+        journeys: journeysReducer,
+        signboards: signboardsReducer
+    })
+}
 
 export default rootReducer;
