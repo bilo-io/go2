@@ -4,37 +4,31 @@ import { Timetable } from './timetable';
 var axios = require('axios');
 require('./style.scss');
 
-export class Signboards extends React.Component {
-    constructor(props) {
-        super(props);
-    }
-    render() {
-        return (
-            <div className='signboards'>
-                <h1>Signboards</h1>
-                {this.props ?
-                    <div>
-                        <p>
-                            <label> StopId: {this.props.stopId}</label>
-                            <input
-                                type="text"
-                                value={this.props.stopId}
-                                onChange={(e) => this.props.setStopId(e.target.value)} />
-                            <button onClick={() => this.props.fetchLineTimetable('SomeLine')}>Fetch</button>
-                        </p>
-                        <p>
-                            <label>LineId: {this.props.lineId}</label>
-                            <input
-                                type="text"
-                                value={this.props.stopId}
-                                onChange={(e) => this.props.setLineId(e.target.value)} />
-                            <button onClick={() => this.props.fetchLineTimetable('SomeLine')}>Fetch</button>
-                        </p>
-                    </div>
-                    : null}
+export const Signboards = (props) => {
+    return (
+        <div className='signboards'>
+            <h1>Signboards</h1>
+            <div>
+                <p>
+                    <label> StopId:</label>
+                    <input
+                        type="text"
+                        value={props.stopId ? props.stopId : ""}
+                        onChange={(e) => props.setStopId(e.target.value)} />
+                    <button onClick={() => props.fetchStopTimetable('SomeLine')}>Fetch</button>
+                </p>
+                <p>
+                    <label>LineId:</label>
+                    <input
+                        type="text"
+                        value={props.lineId ? props.lineId : ""}
+                        onChange={(e) => props.setLineId(e.target.value)} />
+                    <button onClick={() => props.fetchLineTimetable('SomeLine')}>Fetch</button>
+                </p>
             </div>
-        )
-    }
+        </div>
+    )
 }
+
 
 export default Signboards;

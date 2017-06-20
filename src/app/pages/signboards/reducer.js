@@ -13,8 +13,9 @@ const initialState = {
     lineTimetable: undefined
 }
 
-const signboardsReducer = (state = initialState, action) => {
-    switch (action.type) {
+const signboardsReducer = (state = initialState, {type,...action}) => {
+    console.log({action});
+    switch (type) {
         case SET_STOP_ID:
             return {
                 ...state,

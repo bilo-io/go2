@@ -7,11 +7,4 @@ const rootReducer = combineReducers({
     signboards: signboardsReducer
 });
 
-export const makeRootReducer = () => {
-    return combineReducers({
-        journeys: journeysReducer,
-        signboards: signboardsReducer
-    })
-}
-
 export default rootReducer;

@@ -9,8 +9,8 @@ import {
 
 const mapStateToProps = (state) => {
     return {
-        stopId: state.stopId,
-        lineId: state.lineId
+        stopId: state.signboards.stopId,
+        lineId: state.signboards.lineId
     }
 }
 
@@ -30,7 +30,3 @@ const Signboards = connect(
 
 export default Signboards;
 
-// export default connect(
-//     mapStateToProps,
-//     mapDispatchToProps
-// )(Signboards);
