@@ -13,12 +13,8 @@ store.dispatch = function dispatchAndLog(action) {
     let result = next(action)
     console.log('dispatching', action);
     console.log('next state', store.getState())
-    console.log('result', result);
     return result
 }
-
-store.dispatch(setStopId('some Id'));
-store.dispatch(setLineId('another Id'));
 
 ReactDOM.render(
     <Provider store={store}>

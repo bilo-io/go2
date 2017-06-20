@@ -7,14 +7,14 @@ import {
     fetchLineTimetable
 } from './actions';
 
-const mapStateToProps = (state, ownProps) => {
+const mapStateToProps = (state) => {
     return {
         stopId: state.stopId,
         lineId: state.lineId
     }
 }
 
-const mapDispatchToProps = (dispatch, ownProps) => {
+const mapDispatchToProps = (dispatch) => {
     return {
         setStopId: (val) => dispatch(setStopId(val)),
         setLineId: (val) => dispatch(setLineId(val)),
