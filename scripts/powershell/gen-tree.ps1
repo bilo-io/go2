@@ -1,0 +1,1 @@
+Get-ChildItem | tree /F > directory-tree.txt

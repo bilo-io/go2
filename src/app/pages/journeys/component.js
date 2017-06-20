@@ -3,7 +3,7 @@ import {Link} from 'react-router-dom';
 import Map from '../../components/map/Map.js';
 import Journey from './journey/Journey';
 import tapi from '../../tapi.utils';
-require('./journeys.scss');
+require('./style.scss');
 var qs = require('query-string');
 var axios = require('axios');
 
@@ -16,6 +16,12 @@ export default class Journeys extends React.Component {
     }
     componentDidMount() {
         this.initState();
+        this.checkUrl();
+    }
+    initState() {
+        this.setState({geometry: {}});
+    }
+    checkUrl() {
         let journeyId = this.props.match.params.journeyId;
         let params = qs.parse(this.props.location.search);
 
@@ -52,12 +58,9 @@ export default class Journeys extends React.Component {
                         this.postJourney(body);
                     })
             } else {
-                console.log('could not get location',);
+                console.log('could not get location');
             }
         }
-    }
-    initState() {
-        this.setState({geometry: {}});
     }
     render() {
         return (
