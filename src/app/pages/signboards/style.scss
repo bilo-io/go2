@@ -7,4 +7,16 @@ $padding: 1em;
     width: calc(100% - #{$padding});
     padding: 1em;
     height: calc(100% - 3em);
+
+    label {
+        height: 3em;
+        line-height: 3em;
+        margin-left: 1em;
+        margin-right: 1em;
+    }
+
+    input {
+        width: 15em;
+        margin-right: 1em;
+    }
 }

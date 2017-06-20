@@ -4,7 +4,7 @@ import { BrowserRouter as Router } from 'react-router-dom';
 // Components
 import Navbar from './components/navbar/Navbar.js';
 // Pages
-import NotFound from './pages/not-found/NotFound.js';
+import NotFound from './pages/_not-found/NotFound.js';
 import Journeys from './pages/journeys/';
 import Signboards from './pages/signboards/';
 // Utils

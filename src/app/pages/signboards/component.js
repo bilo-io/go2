@@ -1,5 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { Timetable } from './timetable';
+var axios = require('axios');
 require('./style.scss');
 
 export default class Signboards extends React.Component {
@@ -14,8 +16,16 @@ export default class Signboards extends React.Component {
                 <h1>Signboards</h1>
                 {this.props ?
                     <div>
-                        <div onClick={() => this.props.fetchStopTimetable('SomeStop')}> StopId: {this.props.stopId}</div>
-                        <div onClick={() => this.props.fetchLineTimetable('SomeLine')}> LineId: {this.props.lineId}</div>
+                        <p style={{display: 'flex'}}>
+                            <label> StopId: {this.props.stopId}</label>
+                            <input type="text"/>
+                            <button onClick={() => this.props.fetchLineTimetable('SomeLine')}>Fetch</button>
+                        </p>
+                        <p>
+                            <label>LineId: {this.props.lineId}</label>
+                            <input type="text" />
+                            <button onClick={() => this.props.fetchLineTimetable('SomeLine')}>Fetch</button>
+                        </p>
                     </div>
                     : null}
             </div>

@@ -4,17 +4,17 @@ import {
 } from './action-types';
 
 
-export function fetchStopTimetable(id) {
+export const fetchStopTimetable = (stopId) => {
     return {
         type: FETCH_STOP_TIMETABLE,
-        payload: id
+        stopId
     }
 }
 
-export function fetchLineTimetable(id) {
+export const fetchLineTimetable = (lineId) => {
     return {
         type: FETCH_LINE_TIMETABLE,
-        payload: id
+        lineId
     }
 }
 
