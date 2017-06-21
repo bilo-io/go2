@@ -2,22 +2,18 @@ import {
     SET_STOP_ID,
     SET_LINE_ID,
     FETCH_STOP_TIMETABLE,
+    FETCH_STOP_TIMETABLE_SUCCESS,
+    FETCH_STOP_TIMETABLE_FAILURE,
     FETCH_LINE_TIMETABLE,
+    FETCH_LINE_TIMETABLE_SUCCESS,
+    FETCH_LINE_TIMETABLE_FAILURE,
 } from './action-types';
-
 
 export const setStopId = (stopId) => {
     return {
         type: SET_STOP_ID,
         stopId
     }
-}
-
-export const fetchStopTimetable = (stopId) => {
-    return dispatch({
-        type: FETCH_STOP_TIMETABLE,
-        stopId
-    })
 }
 
 export const setLineId = (lineId) => {
@@ -27,10 +23,28 @@ export const setLineId = (lineId) => {
     }
 }
 
-export const fetchLineTimetable = (lineId) => {
+export const fetchStopTimetable = (stopId) => {
     return {
-        type: FETCH_LINE_TIMETABLE,
-        lineId
+        type: FETCH_STOP_TIMETABLE,
+        loading: true,
+        stopId,
+        stopTimetable: []
     }
 }
 
+export const receiveStopTimetable = (json) => {
+    return {
+        type: FETCH_STOP_TIMETABLE_SUCCESS,
+        loading: false,
+        
+    }
+}
+
+export const fetchLineTimetable = (lineId) => {
+    return {
+        type: FETCH_LINE_TIMETABLE,
+        loading: true,
+        lineId,
+        lineTimetable: []
+    }
+}

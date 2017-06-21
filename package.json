@@ -9,8 +9,8 @@
     "build": "npm run clean & webpack -p",
     "serve": "node --inspect server.js",
     "test": "test",
-    "clean": "rimraf ./dist",
-    "clean-all": "rimraf ./dist & rimraf ./node_modules"
+    "clean": "rimraf ./dist & rimraf ./artifact",
+    "clean-all": "npm run clean && rimraf ./node_modules"
   },
   "author": "Bilo Lwabona",
   "license": "ISC",
@@ -32,6 +32,8 @@
     "react-highlight": "^0.10.0",
     "react-redux": "^5.0.5",
     "redux": "^3.7.0",
+    "redux-logger": "^3.0.6",
+    "redux-thunk": "^2.2.0",
     "sass-loader": "^6.0.3",
     "style-loader": "^0.17.0",
     "webpack": "^3.0.0",
