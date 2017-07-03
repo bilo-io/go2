@@ -11,7 +11,6 @@ export default class Journey extends React.Component {
     render() {
         return (
             <div className='journey'>
-                <h1>Journey</h1>
                 {this.props && this.props.journey && this
                     .props
                     .journey
@@ -37,7 +36,6 @@ export class Itinerary extends React.Component {
         let modes = (tapi.Itinerary.getModes(this.props.itinerary) || []);
         return (
             <div className='itinerary'>
-                <h2>Itinerary</h2>
                 <div className='modes-container'>
                     {this.props.itinerary && modes.map((mode, idx) => {
                         return <span key={`${mode.name}${idx}`}>
@@ -65,8 +63,9 @@ export class Leg extends React.Component {
         // console.log(this.props.getModeIcon('Rail'));
     }
     render() {
+        let color = this.props.leg.line ? this.props.leg.line.colour : '#777'
         return (
-            <div className='leg' style={{backgroundColor: this.props.leg.line ? this.props.leg.line.colour : '#777'}}>
+            <div className='leg' style={{backgroundColor: color}}>
                 <div>
                     {this.props.leg.waypoints.map((waypoint, idx) => {
                         return <span key={`${idx}-${waypoint.name}`}>

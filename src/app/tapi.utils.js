@@ -28,6 +28,7 @@ export class Journey {
                 leg.colour =  color;
             })
         })
+        console.log({hexifiedJourney});
         return hexifiedJourney;
     }
 }
