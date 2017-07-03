@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import Map from '../../components/map/Map.js';
+import Map from '../../components/map/map.js';
 import Journey from './journey/journey';
 import tapi from '../../tapi.utils';
 require('./style.scss');

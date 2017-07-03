@@ -1,20 +1,28 @@
 @import '../../../../ws-core/sass/index.scss';
 $color: white;
 $background: #444;
+$padding: 0.5rem;
 
 .journey {
     position: relative;
     height: 100%;
-    padding: 1rem;
+    padding: $padding;
     overflow-y: auto;
     color: $color;
     background: rgba($col-background, 0.5);
+
+    .labeled-value {
+        display: flex;
+        flex-direction: row;
+    }
 }
 
 .itinerary {
     @extend .ws-card;
     color: $color;
     background: $background;
+    padding: $padding;
+
     cursor: pointer;
     &:hover {
         background: lighten($background, 5%);
@@ -22,5 +30,16 @@ $background: #444;
 }
 
 .leg {
+    padding: $padding;
+}
 
+.waypoint {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-content: flex-start;
+
+    span {
+        margin-bottom: 1em;
+    }
 }

@@ -1,5 +1,6 @@
 import React from 'react';
 import tapi from '../../../tapi.utils';
+import moment from 'moment';
 require('./journey.scss');
 
 export default class Journey extends React.Component {
@@ -10,7 +11,8 @@ export default class Journey extends React.Component {
     }
     render() {
         return (
-            <div className='journey'>
+            <div className="journey">
+                {/*{this.journeyHeader()}*/}
                 {this.props && this.props.journey && this
                     .props
                     .journey
@@ -23,6 +25,19 @@ export default class Journey extends React.Component {
                     })}
             </div>
         )
+    }
+    journeyHeader() {
+        this.props.journey ?
+            <div>
+                <div className="labeled-value">
+                    <span><b>Start:</b></span>
+                    <span>{tapi.Journey.getStartOf(this.props.journey)}</span>
+                </div>
+                <div className="labeled-value">
+                    <span><b>End:</b></span>
+                    <span>{tapi.Journey.getEndOf(this.props.journey)}</span>
+                </div>
+            </div> : null
     }
 }
 
@@ -63,13 +78,33 @@ export class Leg extends React.Component {
     render() {
         let color = tapi.toHexColor(this.props.leg && this.props.leg.line ? this.props.leg.line.colour : '#777');
         return (
-            <div className='leg' style={{backgroundColor: color}}>
+            <div className='leg'>
                 {this.props.leg.waypoints.map((waypoint, idx) => {
-                    return <span key={`${idx}-${waypoint.name}`}>
-                        {(waypoint.stop ? waypoint.stop.name : (waypoint.address ? waypoint.address.name : 'taxi'))}
-                    </span>
+                    return (
+                        <div key={`${idx}-${waypoint.name}`} className='waypoint'>
+                            {/*<WaypointGraphic icon={} type={'start'} />*/}
+                            <span style={{ backgroundColor: color }}>
+                                {(waypoint.stop ? waypoint.stop.name : (waypoint.address ? waypoint.address.name : 'taxi'))}
+                            </span>
+                            <span>
+                                {moment.utc(waypoint.arrivalTime).local().format("HH:mm")}
+                            </span>
+                        </div>
+                    )
                 })}
+                <hr />
             </div>
+        )
+    }
+}
+
+export class WaypointGraphic extends React.Component {
+    constructor(props) {
+        super(props);
+    }
+    render() {
+        return (
+            <div></div>
         )
     }
 }
