@@ -11,6 +11,25 @@ export class Journey {
     getLastItinerary(journey) {
         return journey && journey.itineraries && journey.itineraries[journey.itineraries.length - 1];
     }
+
+    hexifyColors(journey) {
+        let hexifiedJourney = Object.assign({}, journey);
+        hexifiedJourney.itineraries.forEach((itinerary) => {
+            itinerary.legs.forEach((leg) => {
+                let color = '#';
+                if (leg.type === 'Transit') {
+                    // '04A1B9'
+                    color += ((!leg.line || !leg.line.colour)
+                        ? '999999'
+                        : leg.line.colour.substring(3, leg.line.colour.length));
+                } else {
+                    color += '777777';
+                }
+                leg.colour =  color;
+            })
+        })
+        return hexifiedJourney;
+    }
 }
 
 export class Itinerary {

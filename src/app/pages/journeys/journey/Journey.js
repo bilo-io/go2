@@ -32,7 +32,7 @@ export class Itinerary extends React.Component {
         super(props);
     }
     componentWillReceiveProps(nextProps) { }
-    
+
     render() {
         let modes = (tapi.Itinerary.getModes(this.props.itinerary) || []);
         return (
@@ -66,10 +66,13 @@ export class Leg extends React.Component {
     }
     render() {
         return (
-            <div className='leg'>
-                <h3>Leg</h3>
+            <div className='leg' style={{backgroundColor: this.props.leg.line ? this.props.leg.line.colour : '#777'}}>
                 <div>
-
+                    {this.props.leg.waypoints.map((waypoint, idx) => {
+                        return <span key={`${idx}-${waypoint.name}`}>
+                            {(waypoint.stop ? waypoint.stop.name : (waypoint.address ? waypoint.address.name : 'taxi'))}
+                        </span>
+                    })}
                 </div>
             </div>
         )

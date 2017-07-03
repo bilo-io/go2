@@ -82,8 +82,9 @@ export default class Journeys extends React.Component {
             'Authorization': localStorage.getItem('wimt_token')
         };
         axios({method: 'get', url: `${this.platformUrl}/journeys/${id}`, headers: headers}).then((response) => {
-            this.setState(Object.assign({}, this.state, {journey: response.data}));
-            this.checkForGeometry(response.data);
+            let formattedResponse = tapi.Journey.hexifyColors(response.data);
+            this.setState(Object.assign({}, this.state, {journey: formattedResponse}));
+            this.checkForGeometry(formattedResponse);
             this.selectItinerary(this.itineraryIndex
                 ? this.itineraryIndex
                 : 0);
@@ -98,8 +99,9 @@ export default class Journeys extends React.Component {
             'Authorization': localStorage.getItem('wimt_token')
         };
         axios({method: 'post', url: `${this.platformUrl}/journeys`, data: body, headers: headers}).then((response) => {
-            this.setState(Object.assign({}, this.state, {journey: response.data}));
-            this.checkForGeometry(response.data);
+            let formattedResponse = tapi.Journey.hexifyColors(response.data);
+            this.setState(Object.assign({}, this.state, {journey: formattedResponse}));
+            this.checkForGeometry(formattedResponse);
             this.selectItinerary(this.itineraryIndex
                 ? this.itineraryIndex
                 : 0);
@@ -139,6 +141,7 @@ export default class Journeys extends React.Component {
                 } else {
                     color += '777777';
                 }
+                
                 let pinType = '';
 
                 leg.geometry && mapItinerary
