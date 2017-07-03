@@ -2,9 +2,9 @@ import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 import { BrowserRouter as Router } from 'react-router-dom';
 // Components
-import Navbar from './components/navbar/Navbar.js';
+import Navbar from './components/navbar/navbar.js';
 // Pages
-import NotFound from './pages/_not-found/NotFound.js';
+import NotFound from './pages/_not-found/not-found.js';
 import Journeys from './pages/journeys/';
 import Signboards from './pages/signboards/';
 // Utils
@@ -18,7 +18,6 @@ export default class App extends React.Component {
 
     constructor(props) {
         super(props);
-        this.state = {};
         this.requestToken();
     }
 

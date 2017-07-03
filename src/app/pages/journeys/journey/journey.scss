@@ -13,11 +13,14 @@ $background: #444;
 
 .itinerary {
     @extend .ws-card;
-    color: $background;
-    background: $color;
+    color: $color;
+    background: $background;
+    cursor: pointer;
+    &:hover {
+        background: lighten($background, 5%);
+    }
 }
 
 .leg {
-    color: darkgray;
-    background: lightgray;
+
 }

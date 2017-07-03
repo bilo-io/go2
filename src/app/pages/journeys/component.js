@@ -1,5 +1,5 @@
 import React from 'react';
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import Map from '../../components/map/Map.js';
 import Journey from './journey/journey';
 import tapi from '../../tapi.utils';
@@ -19,7 +19,10 @@ export default class Journeys extends React.Component {
         this.checkUrl();
     }
     initState() {
-        this.setState({geometry: {}});
+        this.setState({
+            geometry: {},
+            showingMap: false
+        });
     }
     checkUrl() {
         let journeyId = this.props.match.params.journeyId;
@@ -65,13 +68,15 @@ export default class Journeys extends React.Component {
     render() {
         return (
             <div className='journeys'>
-                <Journey
-                    className='journey-wrapper'
-                    journey={this.state && this.state.journey}
-                    setActiveItinerary={this
-                    .setActiveItinerary
-                    .bind(this)}/>
-                {/*<Map className='map-wrapper' geojson={this.state && this.state.geometry}/>*/}
+                {   this.state &&
+                    this.state.showingMap ?
+                        <Map className='map-wrapper' geojson={this.state && this.state.geometry} />
+                        :
+                        <Journey
+                            className='journey-wrapper'
+                            journey={this.state && this.state.journey}
+                            setActiveItinerary={this.setActiveItinerary.bind(this)} />
+                }
             </div>
         )
     }
@@ -81,15 +86,15 @@ export default class Journeys extends React.Component {
             'Content-Type': 'application/json',
             'Authorization': localStorage.getItem('wimt_token')
         };
-        axios({method: 'get', url: `${this.platformUrl}/journeys/${id}`, headers: headers}).then((response) => {
+        axios({ method: 'get', url: `${this.platformUrl}/journeys/${id}`, headers: headers }).then((response) => {
             let formattedResponse = tapi.Journey.hexifyColors(response.data);
-            this.setState(Object.assign({}, this.state, {journey: formattedResponse}));
+            this.setState(Object.assign({}, this.state, { journey: formattedResponse }));
             this.checkForGeometry(formattedResponse);
             this.selectItinerary(this.itineraryIndex
                 ? this.itineraryIndex
                 : 0);
         }).catch((error) => {
-            console.log({error});
+            console.log({ error });
         });
     }
     postJourney(body) {
@@ -98,15 +103,15 @@ export default class Journeys extends React.Component {
             'Content-Type': 'application/json',
             'Authorization': localStorage.getItem('wimt_token')
         };
-        axios({method: 'post', url: `${this.platformUrl}/journeys`, data: body, headers: headers}).then((response) => {
+        axios({ method: 'post', url: `${this.platformUrl}/journeys`, data: body, headers: headers }).then((response) => {
             let formattedResponse = tapi.Journey.hexifyColors(response.data);
-            this.setState(Object.assign({}, this.state, {journey: formattedResponse}));
+            this.setState(Object.assign({}, this.state, { journey: formattedResponse }));
             this.checkForGeometry(formattedResponse);
             this.selectItinerary(this.itineraryIndex
                 ? this.itineraryIndex
                 : 0);
         }).catch((error) => {
-            console.log({error});
+            console.log({ error });
         });
     }
     checkForGeometry(response) {
@@ -141,7 +146,7 @@ export default class Journeys extends React.Component {
                 } else {
                     color += '777777';
                 }
-                
+
                 let pinType = '';
 
                 leg.geometry && mapItinerary
@@ -197,7 +202,7 @@ export default class Journeys extends React.Component {
                 .itineraries
                 .push(mapItinerary);
         });
-        this.setState(Object.assign({}, this.state, {geometry: this.geometry}));
+        this.setState(Object.assign({}, this.state, { geometry: this.geometry }));
     }
     selectItinerary(index) {
         if (index >= this.geometry.itineraries.length) {
@@ -237,5 +242,10 @@ export default class Journeys extends React.Component {
     }
     setActiveItinerary(id) {
         console.log('Parent selecting Itinerary:', id, this.props);
+    }
+    toggleMap() {
+        this.setState(Object.assign({}, this.state, {
+            showingMap: !this.state.showingMap
+        }))
     }
 }

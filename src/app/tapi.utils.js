@@ -25,10 +25,10 @@ export class Journey {
                 } else {
                     color += '777777';
                 }
-                leg.colour =  color;
+                leg.colour = color;
             })
         })
-        console.log({hexifiedJourney});
+        console.log({ hexifiedJourney });
         return hexifiedJourney;
     }
 }
@@ -51,7 +51,7 @@ export class Itinerary {
         modes = itinerary.legs.map((leg) => {
             return {
                 name: this.getModeIcon((leg.line ? leg.line.mode : leg.type)),
-                color: (leg.line ? leg.line.colour : '#777777')
+                color: (leg.line ? toHexColor(leg.line.colour) : '#777777')
             }
         });
         return modes;
@@ -88,7 +88,15 @@ export class Leg {
 var tapi = {
     Journey: new Journey(),
     Itinerary: new Itinerary(),
-    Leg: new Leg()
+    Leg: new Leg(),
+    toHexColor: toHexColor
 }
 
+export function toHexColor(col) {
+    let color = col;
+    if (col.length > 7) {
+        color = '#' + col.substring(3, col.length);
+    }
+    return color;
+}
 export default tapi;

@@ -34,6 +34,7 @@ export class Itinerary extends React.Component {
 
     render() {
         let modes = (tapi.Itinerary.getModes(this.props.itinerary) || []);
+        // let color = tapi.toHexColor(this.props.leg && this.props.leg.line ? this.props.leg.line.colour : '#777');
         return (
             <div className='itinerary'>
                 <div className='modes-container'>
@@ -59,20 +60,15 @@ export class Leg extends React.Component {
     constructor(props) {
         super(props);
     }
-    componentWillReceiveProps(nextProps) {
-        // console.log(this.props.getModeIcon('Rail'));
-    }
     render() {
-        let color = this.props.leg.line ? this.props.leg.line.colour : '#777'
+        let color = tapi.toHexColor(this.props.leg && this.props.leg.line ? this.props.leg.line.colour : '#777');
         return (
             <div className='leg' style={{backgroundColor: color}}>
-                <div>
-                    {this.props.leg.waypoints.map((waypoint, idx) => {
-                        return <span key={`${idx}-${waypoint.name}`}>
-                            {(waypoint.stop ? waypoint.stop.name : (waypoint.address ? waypoint.address.name : 'taxi'))}
-                        </span>
-                    })}
-                </div>
+                {this.props.leg.waypoints.map((waypoint, idx) => {
+                    return <span key={`${idx}-${waypoint.name}`}>
+                        {(waypoint.stop ? waypoint.stop.name : (waypoint.address ? waypoint.address.name : 'taxi'))}
+                    </span>
+                })}
             </div>
         )
     }
