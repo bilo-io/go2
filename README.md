@@ -23,26 +23,17 @@ By the end of the document, you should be able to begin your Pegasus dev journey
 
 # 1. Features
 
-With Pegasus you can basically explore each endpoint, specifically which parameters are available for it, and what output it produces, based on the value of the specified parameters. Below you will find two screenshots, where the left-hand side of the UI is the input section and on the right-hand side you see the output in JSON format. Notice that if there is `geometry` in the response, this will be presented on the map.
+You can make journey requests!
 
-### Json Input/Output
-
-![](/docs/ss-json.png)
-
-### Map Input/Output
-![](/docs/ss-map.png)
+You can view timetables of stops & lines!
 
 # 2. Usage
 
 ## Install & Run
 
 ### Continuous Development
-
-- `git clone https://whereismytransport.visualstudio.com/Product/_git/PegasusUI`
-- `npm run setup`
-
-OR
-
+- Clone the repo
+- `cd ./` the repo
 - `npm install`
 - `npm start`
 

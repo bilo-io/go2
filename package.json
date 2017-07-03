@@ -4,7 +4,7 @@
   "description": "WhereIsMyTransport's API Explorer",
   "main": "index.js",
   "scripts": {
-    "start": "webpack-dev-server --inline --progress --port 7080",
+    "start": "webpack-dev-server --inline --progress --port 2007",
     "setup": "npm install && npm start",
     "build": "npm run clean & webpack -p",
     "serve": "node --inspect server.js",

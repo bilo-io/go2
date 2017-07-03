@@ -4,7 +4,7 @@ export class Journey {
         console.log(`I'm a UTIL for Journey`)
     }
 
-    getFirstItinerary(journey) {
+    static getFirstItinerary(journey) {
         return journey && journey.itineraries && journey.itineraries[0];
     }
 
@@ -27,13 +27,13 @@ export class Itinerary {
     }
 
     getModes(itinerary) {
-        let modes = itinerary.legs.map((leg) => {
+        let modes = [];
+        modes = itinerary.legs.map((leg) => {
             return {
-                mode: this.getModeIcon((leg.line ? leg.line.mode : leg.type)),
+                name: this.getModeIcon((leg.line ? leg.line.mode : leg.type)),
                 color: (leg.line ? leg.line.colour : '#777777')
             }
         });
-        console.log({ modes });
         return modes;
     }
 

@@ -20,7 +20,7 @@ export default class Journey extends React.Component {
                         return <Itinerary
                             key={itinerary.id}
                             itinerary={itinerary}
-                            onClick={ () => { this.props.setActiveItinerary(`itineraryID: ${itinerary.id}`) }}/>
+                            onClick={() => { this.props.setActiveItinerary(`itineraryID: ${itinerary.id}`) }} />
                     })}
             </div>
         )
@@ -31,18 +31,26 @@ export class Itinerary extends React.Component {
     constructor(props) {
         super(props);
     }
-    componentWillReceiveProps(nextProps) {}
+    componentWillReceiveProps(nextProps) { }
+    
     render() {
+        let modes = (tapi.Itinerary.getModes(this.props.itinerary) || []);
         return (
             <div className='itinerary'>
                 <h2>Itinerary</h2>
+                <div className='modes-container'>
+                    {this.props.itinerary && modes.map((mode, idx) => {
+                        return <span key={`${mode.name}${idx}`}>
+                            <i className="material-icons" style={{ color: mode.color }}>{mode.name}</i>
+                        </span>
+                    })}
+                </div>
                 {this.props && this.props.itinerary && this
                     .props
                     .itinerary
                     .legs
                     .map((leg, index) => {
-                        tapi.Itinerary.getModes(this.props.itinerary)
-                        return <Leg key={index} leg={leg}/>
+                        return <Leg key={index} leg={leg} />
                     })}
             </div>
         )
@@ -60,6 +68,9 @@ export class Leg extends React.Component {
         return (
             <div className='leg'>
                 <h3>Leg</h3>
+                <div>
+
+                </div>
             </div>
         )
     }

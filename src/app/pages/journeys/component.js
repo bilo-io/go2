@@ -1,7 +1,7 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 import Map from '../../components/map/Map.js';
-import Journey from './journey/Journey';
+import Journey from './journey/journey';
 import tapi from '../../tapi.utils';
 require('./style.scss');
 var qs = require('query-string');
@@ -65,13 +65,13 @@ export default class Journeys extends React.Component {
     render() {
         return (
             <div className='journeys'>
-                {/*<Journey
+                <Journey
                     className='journey-wrapper'
                     journey={this.state && this.state.journey}
                     setActiveItinerary={this
                     .setActiveItinerary
-                    .bind(this)}/>*/}
-                <Map className='map-wrapper' geojson={this.state && this.state.geometry}/>
+                    .bind(this)}/>
+                {/*<Map className='map-wrapper' geojson={this.state && this.state.geometry}/>*/}
             </div>
         )
     }
