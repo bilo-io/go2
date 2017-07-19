@@ -7,6 +7,7 @@ import Navbar from './components/navbar/navbar.js';
 import NotFound from './pages/_not-found/not-found.js';
 import Journeys from './pages/journeys/';
 import Signboards from './pages/signboards/';
+import Search from './pages/search/';
 // Utils
 import tapi from './tapi.utils.js';
 import tapiConfig from './tapi.config.js';
@@ -30,6 +31,7 @@ export default class App extends React.Component {
                         <Route exact path="/journeys" component={Journeys} />
                         <Route path="/journeys/:journeyId" component={Journeys} />
                         <Route path="/signboards" component={Signboards} />
+                        <Route path="/search" component={Search} />
                         <Route path="*" component={NotFound} />
                     </Switch>
                 </Router>
