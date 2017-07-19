@@ -28,3 +28,11 @@ export const setGoogleResults = (json) => {
         results: json
     }
 }
+
+export const errorOnResults = (error) => {
+    return {
+        type: FETCH_GOOGLE_RESULTS_ERROR,
+        loading: false,
+        results: error
+    }
+}

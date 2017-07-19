@@ -28,6 +28,8 @@ Locally, the webapp is served on [http://localhost:2001](http://localhost:2001)
     - [http://localhost:2007/journeys/3dhNOH97WUq_taeKAW2gqA](http://localhost:2007/journeys/3dhNOH97WUq_taeKAW2gqA)
 - Journey with `destination` (lat,lon):
     - [http://localhost:2007/journeys?destination=-33.960709,18.376146&index=2](http://localhost:2007/journeys?destination=-33.960709,18.376146&index=2)
+- Search for address:
+    - [http://localhost:2007/search](http://localhost:2007/search)
 
 >NOTE: adding the `index={integer}` parameter automatically opens itineraries (index ranges from from 0 - 4, inclusive);
 

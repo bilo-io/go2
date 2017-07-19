@@ -7,7 +7,7 @@ import {
 
 const mapStateToProps = (state) => {
     return {
-        searchQuery: state.search.searchQuery
+        searchQuery: state.searchQuery
     }
 }
 

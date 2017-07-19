@@ -1,61 +1,44 @@
 import {
-    SET_STOP_ID,
-    SET_LINE_ID,
-    FETCH_STOP_TIMETABLE,
-    FETCH_STOP_TIMETABLE_SUCCESS,
-    FETCH_STOP_TIMETABLE_FAILURE,
-    FETCH_LINE_TIMETABLE,
-    FETCH_LINE_TIMETABLE_SUCCESS,
-    FETCH_LINE_TIMETABLE_FAILURE
+    SET_SEARCH_QUERY,
+    FETCH_GOOGLE_RESULTS,
+    FETCH_GOOGLE_RESULTS_SUCCESS,
+    FETCH_GOOGLE_RESULTS_FAILURE
 } from './action-types';
 
 const initialState = {
     loading: false,
+    results: undefined,
     searchQuery: undefined,
-    results: undefined
 }
 
-const signboardsReducer = (state = initialState, { type, ...action }) => {
+const searchReducer = (state = initialState, { type, ...action }) => {
     switch (type) {
-        case SET_STOP_ID:
+        case SET_SEARCH_QUERY:
             return {
                 ...state,
-                stopId: action.stopId
+                searchQuery: action.searchQuery
             }
-        case SET_LINE_ID:
+        case FETCH_GOOGLE_RESULTS:
             return {
                 ...state,
-                lineId: action.lineId
-            }
-        case FETCH_STOP_TIMETABLE:
-            return {
-                ...state,
-                stopId: action.stopId,
+                searchQuery: action.searchQuery,
                 loading: true
             }
-        case FETCH_STOP_TIMETABLE_SUCCESS:
+        case FETCH_GOOGLE_RESULTS_SUCCESS:
             return {
                 ...state,
                 loading: false,
-                stopId: action.stopId,
-                stopTimetable: action.stopTimetable
+                results: action.results
             }
-        case FETCH_STOP_TIMETABLE_FAILURE:
+        case FETCH_GOOGLE_RESULTS_FAILURE:
             return {
                 ...state,
                 loading: false,
-                stopId: action.stopId,
-                stopTimetable: []
-            }
-        case FETCH_LINE_TIMETABLE:
-            return {
-                ...state,
-                lineId: action.lineId,
-                loading: true
+                results: action.results
             }
         default:
             return state;
     }
 }
 
-export default signboardsReducer;
+export default searchReducer;

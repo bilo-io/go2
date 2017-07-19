@@ -11,7 +11,7 @@ export const Search = (props) => {
                 <p>
                     <label>Address</label>
                     <input type="text"
-                            value={props.searchQuery ? props.searchQuery : ''}
+                            defaultValue={props.searchQuery ? props.searchQuery : ''}
                             onChange={(e) => props.searchGoogle(e.target.value)} />
                 </p>
             </div>
