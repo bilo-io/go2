@@ -1,9 +1,17 @@
 import {
+    ADD_ITEM,
     SET_SEARCH_QUERY,
     FETCH_GOOGLE_RESULTS,
     FETCH_GOOGLE_RESULTS_SUCCESS,
     FETCH_GOOGLE_RESULTS_FAILURE
 } from './action-types';
+
+export const addItem = (item) => {
+    return {
+        type: ADD_ITEM,
+        item
+    }
+}
 
 export const setSearchQuery = (searchQuery) => {
     return {

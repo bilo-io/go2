@@ -1,4 +1,5 @@
 import {
+    ADD_ITEM,
     SET_SEARCH_QUERY,
     FETCH_GOOGLE_RESULTS,
     FETCH_GOOGLE_RESULTS_SUCCESS,
@@ -6,6 +7,7 @@ import {
 } from './action-types';
 
 const initialState = {
+    items: ['thing'],
     loading: false,
     results: undefined,
     searchQuery: undefined,
@@ -13,6 +15,12 @@ const initialState = {
 
 const searchReducer = (state = initialState, { type, ...action }) => {
     switch (type) {
+        case ADD_ITEM:
+            let items = state.items.push(action.item)
+            return {
+                ...state,
+                items
+        }    
         case SET_SEARCH_QUERY:
             return {
                 ...state,
